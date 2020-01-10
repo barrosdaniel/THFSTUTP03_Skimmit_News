@@ -15,9 +15,10 @@
   <div id="app" class="container">
     <h1>Skimmit News</h1>
     <div class="form">
-      Title: <input type="text">
-      Summary: <input type="text">
-      <button>Create New</button>
+      Title: <input type="text" v-model="title">
+      Summary: <input type="text" v-model="summary"
+        v-on:keypress.enter="createNew">
+      <button v-on:click="createNew">Create New</button>
     </div>
     <div class="post" v-for="(post, index) in posts">
       <div id="voteCounter">

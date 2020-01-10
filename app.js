@@ -22,6 +22,8 @@ new Vue({
   el: '#app',
   data: {
     posts: posts,
+    title: '',
+    summary: ''
   },
   methods: {
     increment: function (index) {
@@ -30,6 +32,19 @@ new Vue({
     decrement: function (index) {
       if (posts[index].votes > 0) {
         posts[index].votes -= 1;
+      }
+    },
+    createNew: function () {
+      if (!this.title || !this.summary) {
+        alert(`Title and Summary have to be added before you can create a new post.`);
+      } else {
+        const newPost = {
+          title: this.title,
+          summary: this.summary,
+          votes: 0,
+          thumbnail: 'https://placeimg.com/75/75/animals'
+        };
+        posts.push(newPost);
       }
     }
   }
