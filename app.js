@@ -45,7 +45,16 @@ new Vue({
           thumbnail: 'https://placeimg.com/75/75/animals'
         };
         posts.push(newPost);
+        this.title = '';
+        this.summary = '';
       }
+    }
+  },
+  computed: {
+    orderedList: function () {
+      return this.posts.sort((currentPost, nextPost) => {
+        return nextPost.votes - currentPost.votes;
+      });
     }
   }
 });
