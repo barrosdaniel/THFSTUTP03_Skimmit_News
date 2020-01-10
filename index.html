@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>Skimmit News</title>
 </head>
+
 <body>
   <div id="app" class="container">
     <h1>Skimmit News</h1>
@@ -16,21 +19,23 @@
       Summary: <input type="text">
       <button>Create New</button>
     </div>
-    <div class="post">
+    <div class="post" v-for="(post, index) in posts">
       <div id="voteCounter">
-        <span v-on:click="increment">+</span>
-        <span v-on:click="decrement">-</span>
-        <p class="votes">Votes: {{ votes }}</p>
+        <span v-on:click="increment(index)">+</span>
+        <span v-on:click="decrement(index)">-</span>
+        <p class="votes">Votes: {{ post.votes }}</p>
       </div>
-      <div><img v-bind:src="thumbnail" alt="Placeholder image."></div>
+      <div>
+        <img v-bind:src="post.thumbnail" alt="Placeholder image.">
+      </div>
       <div class="post-info">
-        <h3>{{ title }}</h3>
-        <p>{{ summary }}</p>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.summary }}</p>
       </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
   <script src="app.js"></script>
 </body>
-</html>
 
+</html>
